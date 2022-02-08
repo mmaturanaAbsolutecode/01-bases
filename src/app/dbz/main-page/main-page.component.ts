@@ -1,57 +1,36 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Personaje } from '../interfaces/dbz.interface';
+import { DbzService } from '../services/dbz.service';
 
 
 
 @Component({
   selector: 'app-main-page',
   templateUrl: './main-page.component.html',
-  styleUrls: ['./main-page.component.css']
 })
-export class MainPageComponent implements OnInit {
+export class MainPageComponent {
 
-  personajes: Personaje[] = [
-    {
-      nombre: 'Goku',
-      poder: 15000
-    },
-    {
-      nombre: 'Vegeta',
-      poder: 8500
-    }
-  ];
+ // personajes : Personaje[] = [];
 
+//  get personajes():Personaje[] {
+//    return this.dbzService.personajes;
+//  }
+
+  
   nuevo: Personaje = {
-    nombre: '',
-    poder: 0
+    nombre: 'Roshi',
+    poder: 20000
+  };
 
+  // agregarNuevoPersonaje(argumento: Personaje) {
+  //   this.personajes.push(argumento);
+  //   console.log(this.personajes);
+  // }
+
+  constructor( private dbzService: DbzService) {
+    //this.personajes = this.dbzService.personajes;
   }
 
 
-  agregar() {
-    if (this.nuevo.nombre.trim().length === 0) {
-      return;
-    } else {
-      this.personajes.push(this.nuevo);
-      console.log(this.nuevo);
-      this.nuevo = {
-        nombre: '',
-        poder: 0
-      };
-    }
-
-
-  }
-
-  cambiarNombre(event: any) {
-
-    console.log(event.target.value);
-
-  }
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }
